@@ -14,34 +14,58 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     // propiedad llamada contador
     var contador:Int=0
+    var section:Int=0
+    var dias:[String]=["lunes","martes","miércoles","jueves","viernes"]
+    var meses:[String]=["Enero","Febrero","Marzo","Abril","Mayo"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    /////// cuando recibimos un warning de memoria///////
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    ////////Metodos para table view /////////////
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return meses.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return dias.count
+            
+        }else{
+            return dias.count
+        }
         
-        return 20
     }
+
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+            return meses[section]
+        
+    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        contador+=1
+        contador=indexPath.row
+        section=indexPath.section
         let celda=tabla.dequeueReusableCell(withIdentifier: "celda")
-        celda?.textLabel?.text="Hola que tal? \(contador*2)"
-        return celda!
+        
+        
+            celda?.textLabel?.text=dias[contador]
+            return celda!
+        
+        
         
     }
-
-
+    
+    
 }
 
