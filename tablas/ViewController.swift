@@ -33,6 +33,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda=tabla.dequeueReusableCell(withIdentifier: "celda")
         celda?.textLabel?.text="Hola que tal?"
+        return celda!
         
     }
 
